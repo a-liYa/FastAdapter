@@ -1,5 +1,8 @@
 apply plugin: 'com.android.library'
 
+def vCode = 100
+def vName = '1.0.0'
+
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.3"
@@ -7,8 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 1
-        versionName "1.0"
+        vCode 1
+        vName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -24,3 +27,12 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 }
+
+ext {
+    publishArtifact = 'fast-adapter'
+    publishVersion = vName // 发布到Jcenter的版本号
+    publishDesc = '快速实现列表示例，点击item进入对应示例'
+    publishWebsite = 'https://github.com/a-liYa/FastAdapter'
+}
+
+apply from: "${rootDir}/publish.gradle"
